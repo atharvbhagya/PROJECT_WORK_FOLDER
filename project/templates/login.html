@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+
+{%block content%}
+<div id="addmsg">
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}. Go to <a href="{{ url_for('auth.signup') }}">signup page</a>.
+    </div>
+{% endif %}
+{% endwith %}
+</div>
+
+<form action="{{url_for('auth.login')}}" method="post">
+    <p>
+
+        <label for="username">Enter username:</label>
+        <input type="text" name="username" id="username">
+
+    </p>
+
+    <p>
+
+        <label for="password">Enter password:</label>
+        <input type="password" name="password" id="password">
+
+    </p>
+    <div class="field">
+        <label for="checkbox" class="checkbox">
+            <input type="checkbox" name="remember" id="checkbox">
+            Remember me
+        </label>
+    </div>
+   <button type="submit"> Log in</button>
+  
+
+
+</form>
+<script type="text/javascript">window.setTimeout("document.getElementById('addmsg').style.display='none';", 8000); </script>
+
+{%endblock%}

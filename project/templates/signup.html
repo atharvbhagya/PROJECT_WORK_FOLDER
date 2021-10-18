@@ -1,0 +1,36 @@
+{%extends "base.html" %}
+
+{%block content%}
+<duv id="addmsg">
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+    </div>
+{% endif %}
+{% endwith %}
+
+</duv>
+
+
+<form action="{{url_for('auth.signup')}}" method="post">
+    <p>
+        <label for="username">Enter Username:</label>
+        <input type="text" name="username" id="username">
+    </p>
+    <p>
+        <label for="email">Enter email address:</label>
+        <input type="email" name="email" id="email">
+    </p>
+    <p>
+        <label for="password">Enter Password::</label>
+        <input type="password" name="password" id="password">
+    </p>
+
+   <button type="submit">Sign Up</button>
+
+</form>
+
+<script type="text/javascript">window.setTimeout("document.getElementById('addmsg').style.display='none';", 8000); </script>
+
+{%endblock%}
